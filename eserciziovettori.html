@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <body onload="numeri()">
+	<table border="1px solid black"><tr id="vettoreTot"></tr></table>
+	<hr>
+	<table border="1px solid black"><tr id="vettoreMag"></tr></table>
+	<hr>
+    media: <div id="media"></div>
+	massimo: <div id="massimo"></div>
+	minimo: <div id="minimo"></div>
+    <script>
+    const tutti = [];
+    const magg = [];
+    let somma = 0;
+    let max = 100;
+    let min = -100;
+    let n = 0;
+    
+    function numeri() { 
+        for (let i = 0; i < 100; i++) { 
+            n = Math.floor(Math.random() * 201) - 100;  
+            tutti[i] = n; 				
+            somma += n;
+            if (n > max) {
+                max = n;
+                document.getElementById("massimo").innerHTML = max;  
+            }
+            if (n < min) {
+                min = n;
+                document.getElementById("minimo").innerHTML = min;   
+            }
+        }
+        let media = somma / tutti.length;  
+        document.getElementById("media").innerHTML = media;
+        for (let i = 0; i < tutti.length; i++) {
+            if (tutti[i] > 50){
+                magg.push(tutti[i]); 
+            }
+        }
+        let arrHTML = ""; 		
+        for (let i = 0; i < tutti.length; i++) {
+            arrHTML += "<td>" + tutti[i] + "</td>";
+        }
+        document.getElementById("vettoreTot").innerHTML = arrHTML;
+        let arrMaggHTML = ""; 	
+        for (let i = 0; i < magg.length; i++) {
+            arrMaggHTML +="<td>" + magg[i] + "</td> ";
+        }
+        document.getElementById("vettoreMag").innerHTML = arrMaggHTML;
+    }
+    </script>
+    </body>
+</html>
