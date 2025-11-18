@@ -5,110 +5,117 @@ html, body {
 
 body {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   background: #fff;
-  font: 16px Arial, sans-serif;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
   color: #000;
-  padding: 20px 10px;
 }
 
 .card {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
   background: #fff;
   padding: 20px;
   border-radius: 8px;
   border: 1px solid #ccc;
-  max-width: 800px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  max-width: 900px;
+  width: calc(100% - 40px);
+  margin: 0 auto;
 }
 
 .form-area {
+  min-width: 350px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 }
 
 h2 {
-  margin: 0;
+  margin: 0 0 4px 0;
   font-size: 24px;
+  text-align: left;
 }
 
 .input-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.input-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 10px 14px;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
+  width: 100%;
 }
 
-.input-row label {
-  flex: 0 0 150px;
+.input-grid label {
+  justify-self: start;
   font-weight: bold;
-  text-align: right;
+  font-size: 16px;
 }
 
-.input-row input[type="text"],
-.input-row input[type="number"],
-.input-row select {
-  flex: 1;
-  min-width: 200px;
+.input-grid input[type="text"],
+.input-grid input[type="number"] {
+  width: 100%;
   padding: 8px;
-  border: 1px solid #ccc;
   border-radius: 4px;
+  border: 1px solid #ccc;
   font-size: 16px;
   box-sizing: border-box;
 }
 
-.input-row div {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
 .actions {
-  display: flex;
-  justify-content: center;
+  grid-column: 1 / -1;
+  margin-top: 4px;
 }
 
 button {
-  width: 50%;
+  width: 100%;
   padding: 10px;
-  font: bold 16px Arial, sans-serif;
-  border: 1px solid #ccc;
+  font-size: 16px;
+  font-weight: bold;
   border-radius: 4px;
+  border: 1px solid #ccc;
   background: #f0f0f0;
   color: #000;
   cursor: pointer;
 }
 
 #output {
+  min-width: 280px;
+  max-width: 320px;
   padding: 16px;
-  border: 1px solid #ccc;
   border-radius: 8px;
   background: #f9f9f9;
+  border: 1px solid #ccc;
   font-size: 16px;
   line-height: 1.4;
   display: none;
   text-align: left;
+  align-self: center;
 }
 
 #output div {
   margin: 4px 0;
 }
 
-@media (max-width: 680px) {
-  .input-row label {
-    flex: 0 0 100%;
-    text-align: left;
+@media (max-width: 880px) {
+  .card {
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    align-items: center;
+  }
+  .form-area {
+    min-width: 0;
+    width: 100%;
+  }
+  #output {
+    width: 100%;
+    max-width: none;
+    align-self: center;
+  }
+}
   }
   .input-row {
     flex-direction: column;
@@ -118,3 +125,4 @@ button {
     width: 100%;
   }
 }
+
