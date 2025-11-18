@@ -186,7 +186,7 @@
 <!-- Materie preferite (listbox multipla, max 3) -->
 <div class="input-row">
 <label for="materie">Materie preferite (max 3):</label>
-<select id="materie" multiple size="6">
+<select id="materie" multiple="multiple" size="6">
 <option value="Educazione civica">Educazione civica</option>
 <option value="Informatica">Informatica</option>
 <option value="Lingua e Letteratura Italiana">Lingua e Letteratura Italiana</option>
@@ -199,11 +199,14 @@
 <option value="TPSi">TPSi</option>
 <option value="Telecomunicazioni">Telecomunicazioni</option>
 </select>
+<p style="font-size: 12px; color: #555; margin-top: 5px;">
+Tieni premuto <strong>CTRL</strong> per selezionare più materie.
+</p>
 </div>
 
 
 <div class="actions">
-<button onclick="stampaDati()">Invia</button>
+<button type="button" onclick="stampaDati()">Invia</button>
 </div>
 </div>
 </div>
@@ -213,7 +216,7 @@
 
 <script>
 function stampaDati() {
-let user = new Object();
+let user = {};
 user.nome = document.getElementById("nome").value.trim();
 user.cognome = document.getElementById("cognome").value.trim();
 user.indirizzo = document.getElementById("indirizzo").value.trim();
@@ -240,14 +243,17 @@ return;
 
 user.materie = materieSel.length ? materieSel : ["Nessuna"];
 
-
-
 if (!user.nome || !user.cognome || user.anno === "") {
 alert("Compila almeno Nome, Cognome e Anno di nascita!");
 return;
 }
 
-const anno = parseInt(user.anno);
+const anno = parseInt(user.anno, 10);
+if (isNaN(anno)) {
+alert("Anno di nascita non valido");
+return;
+}
+
 const eta = new Date().getFullYear() - anno;
 let gen = "";
 if (anno >= 1901 && anno <= 1927) gen = "Greatest Generation";
@@ -274,7 +280,7 @@ outputDiv.innerHTML = `
 <div><strong>Età:</strong> ${eta} anni</div>
 <div><strong>Generazione:</strong> ${gen}</div>
 <div><strong>Mezzi:</strong> ${user.mezzi.join(", ")}</div>
-<div><strong>Materia preferita:</strong> ${user.materia}</div>
+<div><strong>Materie preferite:</strong> ${user.materie.join(", ")}</div>
 `;
 }
 </script>
