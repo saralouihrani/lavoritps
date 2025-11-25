@@ -216,7 +216,7 @@ Tieni premuto <strong>CTRL</strong> per selezionare più materie.
 
 <script>
 function stampaDati() {
-    var user = {};
+    const user = {};
     user.nome = document.getElementById("nome").value.trim();
     user.cognome = document.getElementById("cognome").value.trim();
     user.indirizzo = document.getElementById("indirizzo").value.trim();
@@ -224,24 +224,24 @@ function stampaDati() {
     user.cap = document.getElementById("cap").value.trim();
     user.anno = document.getElementById("anno").value.trim();
 
-    var selezioneSesso = document.querySelector('input[name="sesso"]:checked');
+    const selezioneSesso = document.querySelector('input[name="sesso"]:checked');
     user.sesso = selezioneSesso ? selezioneSesso.value : "Non specificato";
 
     user.provincia = document.getElementById("provincia").value || "Non selezionata";
 
-    var mezziSelezionati = document.querySelectorAll('input[name="mezzi"]:checked');
-    var mezziArray = [];
-    for (var i = 0; i < mezziSelezionati.length; i++) {
+    const mezziSelezionati = document.querySelectorAll('input[name="mezzi"]:checked');
+    const mezziArray = [];
+    for (const i = 0; i < mezziSelezionati.length; i++) {
         mezziArray.push(mezziSelezionati[i].value);
     }
     if (mezziArray.length === 0) mezziArray = ["Nessuno"];
     user.mezzi = mezziArray;
 
     // Materie preferite (max 3)
-    var materieSel = [];
-    var options = document.getElementById("materie").selectedOptions;
+    const materieSel = [];
+    const options = document.getElementById("materie").selectedOptions;
 
-    for (var k = 0; k < options.length; k++) {
+    for (const k = 0; k < options.length; k++) {
         materieSel.push(options[k].value);
     }
 
@@ -257,14 +257,14 @@ function stampaDati() {
         return;
     }
 
-    var anno = parseInt(user.anno, 10);
+    const anno = parseInt(user.anno, 10);
     if (isNaN(anno)) {
         alert("Anno di nascita non valido");
         return;
     }
 
-    var eta = new Date().getFullYear() - anno;
-    var gen = "";
+    const eta = new Date().getFullYear() - anno;
+    const gen = "";
 
     if (anno >= 1901 && anno <= 1927) gen = "Greatest Generation";
     else if (anno >= 1928 && anno <= 1945) gen = "Generazione Silenziosa";
@@ -275,7 +275,7 @@ function stampaDati() {
     else if (anno >= 2013) gen = "Generazione Alpha";
     else gen = "Anno non valido o troppo lontano nel tempo";
 
-    var outputDiv = document.getElementById("output");
+    const outputDiv = document.getElementById("output");
     outputDiv.style.display = "block";
 
     outputDiv.innerHTML =
