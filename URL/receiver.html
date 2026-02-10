@@ -17,10 +17,9 @@
 
     <script>
         function leggiParametri() {
-            const params = new URLSearchParams(window.location.search);
 
-            let p1 = params.get("param1") || "Non inserito";
-            let p2 = params.get("param2") || "Non inserito";
+            let p1 = localStorage.getItem("param1") || "Non inserito";
+            let p2 = localStorage.getItem("param2") || "Non inserito";
 
             document.getElementById("risultato").innerHTML =
                 "Parametro 1: <strong>" + p1 + "</strong><br>" +
@@ -36,3 +35,4 @@
 
 </body>
 </html>
+
