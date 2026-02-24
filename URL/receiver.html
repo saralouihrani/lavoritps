@@ -3,36 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Receiver</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
-        <h2>Pagina Receiver</h2>
+<div class="container">
+    <h2>Pagina Receiver</h2>
 
-        <p id="risultato"></p>
+    <p id="risultato"></p>
 
-        <button onclick="tornaSender()">Torna al Sender</button>
-    </div>
+    <button onclick="tornaSender()">Torna al Sender</button>
+</div>
 
-    <script>
-        function leggiParametri() {
+<script>
 
-            let p1 = localStorage.getItem("param1") || "Non inserito";
-            let p2 = localStorage.getItem("param2") || "Non inserito";
+const queryString = window.location.search;
 
-            document.getElementById("risultato").innerHTML =
-                "Parametro 1: <strong>" + p1 + "</strong><br>" +
-                "Parametro 2: <strong>" + p2 + "</strong>";
-        }
+const parametri = new URLSearchParams(queryString);
 
-        function tornaSender() {
-            window.location.href = "sender.html";
-        }
+const parametro1 = parametri.get("param1") || "Non inserito";
+const parametro2 = parametri.get("param2") || "Non inserito";
 
-        leggiParametri();
-    </script>
+document.getElementById("risultato").innerHTML =
+    "Parametro 1: <strong>" + parametro1 + "</strong><br>" +
+    "Parametro 2: <strong>" + parametro2 + "</strong>";
+
+function tornaSender() {
+    window.location.href = "sender.html";
+}
+
+</script>
 
 </body>
 </html>
-
